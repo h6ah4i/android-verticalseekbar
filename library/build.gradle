@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode 1
+        versionName "0.5"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            consumerProguardFiles  'proguard-rules.pro'
+        }
+        debug {
+            jniDebuggable true
+
+            minifyEnabled false
+            shrinkResources false
+            consumerProguardFiles  'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:21.0.+'
+}
