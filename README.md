@@ -21,7 +21,7 @@ Target platforms
 Latest version
 ---
 
-- Version 0.5.0  (January 11, 2015)
+- Version 0.5.1  (January 12, 2015)
 
 Usage
 ---
