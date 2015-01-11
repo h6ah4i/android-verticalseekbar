@@ -47,6 +47,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.SeekBar;
 
@@ -317,7 +318,14 @@ public class VerticalSeekBar extends SeekBar {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         } else {
             super.onMeasure(heightMeasureSpec, widthMeasureSpec);
-            setMeasuredDimension(super.getMeasuredHeight(), super.getMeasuredWidth());
+
+            final ViewGroup.LayoutParams lp = getLayoutParams();
+
+            if (isInEditMode() && (lp != null) && (lp.height >= 0)) {
+                setMeasuredDimension(super.getMeasuredHeight(), getLayoutParams().height);
+            } else {
+                setMeasuredDimension(super.getMeasuredHeight(), super.getMeasuredWidth());
+            }
         }
     }
 
@@ -379,7 +387,9 @@ public class VerticalSeekBar extends SeekBar {
     }
 
     /*package*/ boolean useViewRotation() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
+        final boolean isSupportedApiLevel = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
+        final boolean inEditMode = isInEditMode();
+        return isSupportedApiLevel && !inEditMode;
     }
 
     private VerticalSeekBarWrapper getWrapper() {

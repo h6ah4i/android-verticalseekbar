@@ -26,10 +26,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <!--
-       NOTE: VerticalSeekBars are not rendered properly in preview screen on Android Studio.
-     -->
-
     <!-- VerticalSeekBar in non-ScrollView -->
     <TextView
         android:layout_width="match_parent"
