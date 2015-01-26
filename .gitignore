@@ -2,6 +2,7 @@
 /local.properties
 /.idea
 /build
+/repository
 .DS_Store
 
 *.iml
