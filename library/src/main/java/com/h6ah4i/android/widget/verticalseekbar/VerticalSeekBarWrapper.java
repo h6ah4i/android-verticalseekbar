@@ -15,6 +15,7 @@
  */
 
 package com.h6ah4i.android.widget.verticalseekbar;
+
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;

@@ -35,9 +35,6 @@
 
 package com.h6ah4i.android.widget.verticalseekbar;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -50,6 +47,9 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.SeekBar;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class VerticalSeekBar extends SeekBar {
     public static final int ROTATION_ANGLE_CW_90 = 90;
@@ -204,7 +204,7 @@ public class VerticalSeekBar extends SeekBar {
         } else if (value > available) {
             scale = 1.0f;
         } else {
-            scale = value / (float)available;
+            scale = value / (float) available;
         }
 
         final int max = getMax();
