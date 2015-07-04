@@ -30,7 +30,7 @@ apply from: '../common/android-set-common-properties.gradle'
 android {
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdkVersion 22
 
 
         def dataProps = new Properties()
@@ -56,7 +56,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:21.0.+'
+    compile 'com.android.support:support-v4:22.2.+'
 }
 
 // NOTE: this line should be place at end of the file

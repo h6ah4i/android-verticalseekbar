@@ -15,6 +15,7 @@
  */
 
 package com.h6ah4i.android.widget.verticalseekbar;
+
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
@@ -55,8 +56,13 @@ public class VerticalSeekBarWrapper extends FrameLayout {
             seekBar.setLayoutParams(lp);
 
             seekBar.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+            int seekBarWidth = seekBar.getMeasuredWidth();
+            seekBar.measure(
+                    MeasureSpec.makeMeasureSpec(w, MeasureSpec.AT_MOST),
+                    MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY));
+
             lp.gravity = Gravity.TOP | Gravity.LEFT;
-            lp.leftMargin = (w - seekBar.getMeasuredWidth()) / 2;
+            lp.leftMargin = (w - seekBarWidth) / 2;
             seekBar.setLayoutParams(lp);
         }
 
@@ -64,6 +70,14 @@ public class VerticalSeekBarWrapper extends FrameLayout {
     }
 
     private void onSizeChangedUseViewRotation(int w, int h, int oldw, int oldh) {
+        final VerticalSeekBar seekBar = getChildSeekBar();
+
+        if (seekBar != null) {
+            seekBar.measure(
+                    MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(w, MeasureSpec.AT_MOST));
+        }
+
         applyViewRotation(w, h);
         super.onSizeChanged(w, h, oldw, oldh);
     }
@@ -109,6 +123,7 @@ public class VerticalSeekBarWrapper extends FrameLayout {
 
             lp.width = h;
             lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+
             seekBar.setLayoutParams(lp);
 
             if (rotationAngle == VerticalSeekBar.ROTATION_ANGLE_CW_90) {

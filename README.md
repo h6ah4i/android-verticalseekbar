@@ -23,7 +23,7 @@ Target platforms
 Latest version
 ---
 
-- Version 0.5.1  (January 12, 2015)
+- Version 0.5.2  (July 5, 2015)
 
 
 Getting started
@@ -33,7 +33,7 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```groovy
 dependencies {
-    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.5.1'
+    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.5.2'
 }
 ```
 

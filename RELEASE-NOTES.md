@@ -1,3 +1,6 @@
+## 0.5.2
+- Fix VerticalSeekBar not working properly after size changed
+
 ## 0.5.1
 - Fix rendering issue on Android Studio preview window
 - Published on Maven repository
