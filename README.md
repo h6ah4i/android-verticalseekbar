@@ -3,6 +3,7 @@ VerticalSeekBar
 
 Vertical SeekBar class which supports Android 2.3 - 6.0.
 
+[ ![Download](https://api.bintray.com/packages/h6ah4i/maven/android-verticalseekbar/images/download.svg) ](https://bintray.com/h6ah4i/maven/android-verticalseekbar/_latestVersion)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VerticalSeekBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1436)
 
 ---
