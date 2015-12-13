@@ -13,6 +13,9 @@ Vertical SeekBar class which supports Android 2.3 - 6.0.
 |-------------|-----------|------------|-------------|
 | <img src="./pic/gb.png?raw=true" alt="Example on Android 2.3" width="150" /> | <img src="./pic/ics.png?raw=true" alt="Example on Android 4.0" width="150" /> | <img src="./pic/lollipop.png?raw=true" alt="Example on Android 5.0" width="150" /> | <img src="./pic/marshmallow.png?raw=true" alt="Example on Android 5.0" width="150" /> |
 
+### Download the demo app on Google Play
+<a href="https://play.google.com/store/apps/details?id=com.h6ah4i.android.example.verticalseekbar&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height="48" /></a>
+
 ---
 
 Target platforms
