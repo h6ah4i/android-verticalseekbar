@@ -118,25 +118,22 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         final VerticalSeekBar seekBar = getChildSeekBar();
 
         if (seekBar != null) {
-            final int rotationAngle = seekBar.getRotationAngle();
             final ViewGroup.LayoutParams lp = seekBar.getLayoutParams();
+            final int rotationAngle = seekBar.getRotationAngle();
+            final int paddingTop = seekBar.getPaddingTop();
+            final int paddingBottom = seekBar.getPaddingBottom();
+            final int thumbOffset = seekBar.getThumbOffset();
+            final int w2 = paddingTop + paddingBottom + thumbOffset * 2;
 
             lp.width = h;
             lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
             seekBar.setLayoutParams(lp);
 
-            if (rotationAngle == VerticalSeekBar.ROTATION_ANGLE_CW_90) {
-                final int paddingEnd = ViewCompat.getPaddingEnd(seekBar);
-                ViewCompat.setRotation(seekBar, 90);
-                ViewCompat.setTranslationX(seekBar, -(h - w) / 2);
-                ViewCompat.setTranslationY(seekBar, h / 2 - paddingEnd);
-            } else if (rotationAngle == VerticalSeekBar.ROTATION_ANGLE_CW_270) {
-                final int paddingStart = ViewCompat.getPaddingStart(seekBar);
-                ViewCompat.setRotation(seekBar, -90);
-                ViewCompat.setTranslationX(seekBar, -(h - w) / 2);
-                ViewCompat.setTranslationY(seekBar, h / 2 - paddingStart);
-            }
+
+            ViewCompat.setRotation(seekBar, toRotationAngleToDegrees(rotationAngle));
+            ViewCompat.setTranslationX(seekBar, -(h - w) * 0.5f);
+            ViewCompat.setTranslationY(seekBar, Math.max(0.0f, (h - Math.max(w, w2)) * 0.5f));
         }
     }
 
@@ -151,6 +148,17 @@ public class VerticalSeekBarWrapper extends FrameLayout {
             return seekBar.useViewRotation();
         } else {
             return false;
+        }
+    }
+
+    private static int toRotationAngleToDegrees(int angle) {
+        switch (angle) {
+            case VerticalSeekBar.ROTATION_ANGLE_CW_90:
+                return 90;
+            case VerticalSeekBar.ROTATION_ANGLE_CW_270:
+                return -90;
+            default:
+                return 0;
         }
     }
 }
