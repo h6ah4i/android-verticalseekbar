@@ -94,10 +94,6 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         super.setThumb(thumb);
     }
 
-    private Drawable getThumbCompat() {
-        return mThumb_;
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (useViewRotation()) {
@@ -112,18 +108,13 @@ public class VerticalSeekBar extends AppCompatSeekBar {
             return false;
         }
 
-        final Drawable mThumb = getThumbCompat();
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 setPressed(true);
-                if (mThumb != null) {
-                    // This may be within the padding region
-                    invalidate(mThumb.getBounds());
-                }
                 onStartTrackingTouch();
                 trackTouchEvent(event);
                 attemptClaimDrag(true);
+                invalidate();
                 break;
 
             case MotionEvent.ACTION_MOVE:
@@ -180,11 +171,11 @@ public class VerticalSeekBar extends AppCompatSeekBar {
 
 
     private void trackTouchEvent(MotionEvent event) {
-        final int paddingTop = super.getPaddingTop();
-        final int paddingBottom = super.getPaddingBottom();
+        final int paddingLeft = super.getPaddingLeft();
+        final int paddingRight = super.getPaddingRight();
         final int height = getHeight();
 
-        final int available = height - paddingTop - paddingBottom;
+        final int available = height - paddingLeft - paddingRight;
         int y = (int) event.getY();
 
         final float scale;
@@ -192,10 +183,10 @@ public class VerticalSeekBar extends AppCompatSeekBar {
 
         switch (mRotationAngle) {
             case ROTATION_ANGLE_CW_90:
-                value = y - paddingTop;
+                value = y - paddingLeft;
                 break;
             case ROTATION_ANGLE_CW_270:
-                value = (height - paddingTop) - y;
+                value = (height - paddingLeft) - y;
                 break;
         }
 
@@ -322,7 +313,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
             final ViewGroup.LayoutParams lp = getLayoutParams();
 
             if (isInEditMode() && (lp != null) && (lp.height >= 0)) {
-                setMeasuredDimension(super.getMeasuredHeight(), getLayoutParams().height);
+                setMeasuredDimension(super.getMeasuredHeight(), lp.height);
             } else {
                 setMeasuredDimension(super.getMeasuredHeight(), super.getMeasuredWidth());
             }

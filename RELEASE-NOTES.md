@@ -1,3 +1,8 @@
+## 0.7.0
+- Fix padding handling (#3)
+- Add android:splitTrack="false" workaround for Android N
+- Update support library to v23.4.0
+
 ## 0.6.0
 - Change to extend AppCompatSeekBar
 
