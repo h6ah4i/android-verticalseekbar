@@ -1,7 +1,7 @@
 VerticalSeekBar
 ===============
 
-Vertical SeekBar class which supports Android 2.3 - 6.0.
+Vertical SeekBar class which supports Android 2.3 - 6.0. (+ works well on N preview)
 
 [ ![Download](https://api.bintray.com/packages/h6ah4i/maven/android-verticalseekbar/images/download.svg) ](https://bintray.com/h6ah4i/maven/android-verticalseekbar/_latestVersion)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VerticalSeekBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1436)
@@ -28,7 +28,7 @@ Target platforms
 Latest version
 ---
 
-- Version 0.6.0  (December 13, 2015)
+- Version 0.7.0  (June 4, 2016)
 
 
 
@@ -39,13 +39,9 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```groovy
 dependencies {
-    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.6.0'
+    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.0'
 }
 ```
-
-### Notice
-Since v0.6.0 `VerticalSeekBar` has changed to extend `AppCompatSeekBar` from support library. If you want to use platform native SeekBar, please use v0.5.2 instead.
-
 
 Usage
 ---
