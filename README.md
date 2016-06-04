@@ -61,9 +61,12 @@ Usage
         android:id="@+id/mySeekBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:splitTrack="false"
         app:seekBarRotation="CW90" /> <!-- Rotation: CW90 or CW270 -->
 </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 ```
+
+**NOTE: `android:splitTrack="false"` is required for Android N.**
 
 ### Java code
 
