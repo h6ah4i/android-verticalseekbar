@@ -21,9 +21,6 @@ apply from: '../common/android-set-common-properties.gradle'
 apply from: '../common/android-signing-utils.gradle'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.h6ah4i.android.example.verticalseekbar"
         minSdkVersion 9
