@@ -52,6 +52,7 @@
                 android:id="@+id/seekBar1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:splitTrack="false"
                 app:seekBarRotation="CW90" />
         </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
@@ -67,6 +68,7 @@
                 android:id="@+id/seekBar2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:splitTrack="false"
                 app:seekBarRotation="CW270" />
         </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
@@ -103,6 +105,7 @@
                     android:id="@+id/seekBar3"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:splitTrack="false"
                     app:seekBarRotation="CW90" />
             </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
@@ -118,6 +121,7 @@
                     android:id="@+id/seekBar4"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:splitTrack="false"
                     app:seekBarRotation="CW270" />
             </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
