@@ -155,20 +155,24 @@ public class VerticalSeekBar extends AppCompatSeekBar {
     }
 
     private boolean onTouchEventUseViewRotation(MotionEvent event) {
-        int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                attemptClaimDrag(true);
-                break;
+        boolean handled = super.onTouchEvent(event);
 
-            case MotionEvent.ACTION_UP:
-                attemptClaimDrag(false);
-                break;
+        if (handled) {
+            int action = event.getAction();
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    attemptClaimDrag(true);
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    attemptClaimDrag(false);
+                    break;
+            }
         }
 
-        return super.onTouchEvent(event);
+        return handled;
     }
-
 
     private void trackTouchEvent(MotionEvent event) {
         final int paddingLeft = super.getPaddingLeft();
