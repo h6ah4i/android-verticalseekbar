@@ -252,8 +252,8 @@ public class VerticalSeekBar extends AppCompatSeekBar {
                     break;
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                 case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    handled = true;
-                    break;
+                    // move view focus to previous/next view
+                    return false;
                 default:
                     handled = false;
                     break;
