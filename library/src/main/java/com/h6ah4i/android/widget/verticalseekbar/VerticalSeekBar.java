@@ -47,6 +47,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.ProgressBar;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -57,7 +58,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
 
     private boolean mIsDragging;
     private Drawable mThumb_;
-    private Method mMethodSetProgress;
+    private Method mMethodSetProgressFromUser;
     private int mRotationAngle = ROTATION_ANGLE_CW_90;
 
     public VerticalSeekBar(Context context) {
@@ -205,7 +206,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         final int max = getMax();
         final float progress = scale * max;
 
-        setProgress((int) progress, true);
+        _setProgressFromUser((int) progress, true);
     }
 
     /**
@@ -265,7 +266,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
                 progress += (direction * keyProgressIncrement);
 
                 if (progress >= 0 && progress <= getMax()) {
-                    setProgress(progress - keyProgressIncrement, true);
+                    _setProgressFromUser(progress, true);
                 }
 
                 return true;
@@ -283,20 +284,20 @@ public class VerticalSeekBar extends AppCompatSeekBar {
         }
     }
 
-    private synchronized void setProgress(int progress, boolean fromUser) {
-        if (mMethodSetProgress == null) {
+    private synchronized void _setProgressFromUser(int progress, boolean fromUser) {
+        if (mMethodSetProgressFromUser == null) {
             try {
                 Method m;
-                m = this.getClass().getMethod("setProgress", int.class, boolean.class);
+                m = ProgressBar.class.getDeclaredMethod("setProgress", int.class, boolean.class);
                 m.setAccessible(true);
-                mMethodSetProgress = m;
+                mMethodSetProgressFromUser = m;
             } catch (NoSuchMethodException e) {
             }
         }
 
-        if (mMethodSetProgress != null) {
+        if (mMethodSetProgressFromUser != null) {
             try {
-                mMethodSetProgress.invoke(this, progress, fromUser);
+                mMethodSetProgressFromUser.invoke(this, progress, fromUser);
             } catch (IllegalArgumentException e) {
             } catch (IllegalAccessException e) {
             } catch (InvocationTargetException e) {
