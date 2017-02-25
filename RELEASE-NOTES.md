@@ -1,3 +1,7 @@
+## 0.7.1
+- Fix layout issue when placed inside of a LinearLayout with weight parameter (#5)
+- Update support library to v25.2.0
+
 ## 0.7.0
 - Fix padding handling (#3)
 - Add android:splitTrack="false" workaround for Android N
