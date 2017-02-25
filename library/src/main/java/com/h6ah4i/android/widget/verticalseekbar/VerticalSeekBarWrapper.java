@@ -118,22 +118,31 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         final VerticalSeekBar seekBar = getChildSeekBar();
 
         if (seekBar != null) {
-            final ViewGroup.LayoutParams lp = seekBar.getLayoutParams();
             final int rotationAngle = seekBar.getRotationAngle();
-            final int paddingTop = seekBar.getPaddingTop();
-            final int paddingBottom = seekBar.getPaddingBottom();
-            final int thumbOffset = seekBar.getThumbOffset();
-            final int w2 = paddingTop + paddingBottom + thumbOffset * 2;
+            final int seekBarMeasuredWidth = seekBar.getMeasuredWidth();
+            final int seekBarMeasuredHeight = seekBar.getMeasuredHeight();
+            final ViewGroup.LayoutParams lp = seekBar.getLayoutParams();
 
             lp.width = h;
             lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
             seekBar.setLayoutParams(lp);
 
+            ViewCompat.setPivotX(seekBar, 0);
+            ViewCompat.setPivotY(seekBar, 0);
 
-            ViewCompat.setRotation(seekBar, toRotationAngleToDegrees(rotationAngle));
-            ViewCompat.setTranslationX(seekBar, -(h - w) * 0.5f);
-            ViewCompat.setTranslationY(seekBar, Math.max(0.0f, (h - Math.max(w, w2)) * 0.5f));
+            switch (rotationAngle) {
+                case VerticalSeekBar.ROTATION_ANGLE_CW_90:
+                    ViewCompat.setRotation(seekBar, 90);
+                    ViewCompat.setTranslationY(seekBar, 0);
+                    ViewCompat.setTranslationX(seekBar, (w + seekBarMeasuredHeight) / 2);
+                    break;
+                case VerticalSeekBar.ROTATION_ANGLE_CW_270:
+                    ViewCompat.setRotation(seekBar, 270);
+                    ViewCompat.setTranslationY(seekBar, seekBarMeasuredWidth);
+                    ViewCompat.setTranslationX(seekBar, (w - seekBarMeasuredHeight) / 2);
+                    break;
+            }
         }
     }
 
@@ -148,17 +157,6 @@ public class VerticalSeekBarWrapper extends FrameLayout {
             return seekBar.useViewRotation();
         } else {
             return false;
-        }
-    }
-
-    private static int toRotationAngleToDegrees(int angle) {
-        switch (angle) {
-            case VerticalSeekBar.ROTATION_ANGLE_CW_90:
-                return 90;
-            case VerticalSeekBar.ROTATION_ANGLE_CW_270:
-                return -90;
-            default:
-                return 0;
         }
     }
 }
