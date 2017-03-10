@@ -22,7 +22,7 @@ Target platforms
 ---
 
 - from Android 2.3.x  (Gingerbread)
-- to Android 7.x (Nugat)
+- to Android 7.x (Nougat)
 
 
 Latest version
