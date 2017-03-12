@@ -1,3 +1,7 @@
+## 0.7.2
+- Fix layout issue when in RTL mode (#6)
+- Better padding handling for VerticalSeekBarWrapper
+
 ## 0.7.1
 - Fix layout issue when placed inside of a LinearLayout with weight parameter (#5)
 - Update support library to v25.2.0

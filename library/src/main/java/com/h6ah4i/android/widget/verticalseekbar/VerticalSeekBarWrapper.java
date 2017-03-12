@@ -50,19 +50,23 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         final VerticalSeekBar seekBar = getChildSeekBar();
 
         if (seekBar != null) {
+            final int hPadding = getPaddingLeft() + getPaddingRight();
+            final int vPadding = getPaddingTop() + getPaddingBottom();
             final FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) seekBar.getLayoutParams();
+
             lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-            lp.height = h;
+            lp.height = Math.max(0, h - vPadding);
             seekBar.setLayoutParams(lp);
 
             seekBar.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-            int seekBarWidth = seekBar.getMeasuredWidth();
+
+            final int seekBarMeasuredWidth = seekBar.getMeasuredWidth();
             seekBar.measure(
-                    MeasureSpec.makeMeasureSpec(w, MeasureSpec.AT_MOST),
-                    MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY));
+                    MeasureSpec.makeMeasureSpec(Math.max(0, w - hPadding), MeasureSpec.AT_MOST),
+                    MeasureSpec.makeMeasureSpec(Math.max(0, h - vPadding), MeasureSpec.EXACTLY));
 
             lp.gravity = Gravity.TOP | Gravity.LEFT;
-            lp.leftMargin = (w - seekBarWidth) / 2;
+            lp.leftMargin = (Math.max(0, w - hPadding) - seekBarMeasuredWidth) / 2;
             seekBar.setLayoutParams(lp);
         }
 
@@ -73,9 +77,11 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         final VerticalSeekBar seekBar = getChildSeekBar();
 
         if (seekBar != null) {
+            final int hPadding = getPaddingLeft() + getPaddingRight();
+            final int vPadding = getPaddingTop() + getPaddingBottom();
             seekBar.measure(
-                    MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY),
-                    MeasureSpec.makeMeasureSpec(w, MeasureSpec.AT_MOST));
+                    MeasureSpec.makeMeasureSpec(Math.max(0, h - vPadding), MeasureSpec.EXACTLY),
+                    MeasureSpec.makeMeasureSpec(Math.max(0, w - hPadding), MeasureSpec.AT_MOST));
         }
 
         applyViewRotation(w, h);
@@ -86,23 +92,30 @@ public class VerticalSeekBarWrapper extends FrameLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         final VerticalSeekBar seekBar = getChildSeekBar();
         final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        final int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        final int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        final int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
         if ((seekBar != null) && (widthMode != MeasureSpec.EXACTLY)) {
             final int seekBarWidth;
             final int seekBarHeight;
+            final int hPadding = getPaddingLeft() + getPaddingRight();
+            final int vPadding = getPaddingTop() + getPaddingBottom();
+            final int innerContentWidthMeasureSpec = MeasureSpec.makeMeasureSpec(Math.max(0, widthSize - hPadding), widthMode);
+            final int innerContentHeightMeasureSpec = MeasureSpec.makeMeasureSpec(Math.max(0, heightSize - vPadding), heightMode);
 
             if (useViewRotation()) {
-                seekBar.measure(heightMeasureSpec, widthMeasureSpec);
+                seekBar.measure(innerContentHeightMeasureSpec, innerContentWidthMeasureSpec);
                 seekBarWidth = seekBar.getMeasuredHeight();
                 seekBarHeight = seekBar.getMeasuredWidth();
             } else {
-                seekBar.measure(widthMeasureSpec, heightMeasureSpec);
+                seekBar.measure(innerContentWidthMeasureSpec, innerContentHeightMeasureSpec);
                 seekBarWidth = seekBar.getMeasuredWidth();
                 seekBarHeight = seekBar.getMeasuredHeight();
             }
 
-            final int measuredWidth = ViewCompat.resolveSizeAndState(seekBarWidth, widthMeasureSpec, 0);
-            final int measuredHeight = ViewCompat.resolveSizeAndState(seekBarHeight, heightMeasureSpec, 0);
+            final int measuredWidth = ViewCompat.resolveSizeAndState(seekBarWidth + hPadding, widthMeasureSpec, 0);
+            final int measuredHeight = ViewCompat.resolveSizeAndState(seekBarHeight + vPadding, heightMeasureSpec, 0);
 
             setMeasuredDimension(measuredWidth, measuredHeight);
         } else {
@@ -118,29 +131,43 @@ public class VerticalSeekBarWrapper extends FrameLayout {
         final VerticalSeekBar seekBar = getChildSeekBar();
 
         if (seekBar != null) {
+            final boolean isLTR = ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_LTR;
             final int rotationAngle = seekBar.getRotationAngle();
             final int seekBarMeasuredWidth = seekBar.getMeasuredWidth();
             final int seekBarMeasuredHeight = seekBar.getMeasuredHeight();
+            final int hPadding = getPaddingLeft() + getPaddingRight();
+            final int vPadding = getPaddingTop() + getPaddingBottom();
+            final float hOffset = (Math.max(0, w - hPadding) - seekBarMeasuredHeight) * 0.5f;
             final ViewGroup.LayoutParams lp = seekBar.getLayoutParams();
 
-            lp.width = h;
+            lp.width = Math.max(0, h - vPadding);
             lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
             seekBar.setLayoutParams(lp);
 
-            ViewCompat.setPivotX(seekBar, 0);
+            ViewCompat.setPivotX(seekBar, (isLTR) ? 0 : Math.max(0, h - vPadding));
             ViewCompat.setPivotY(seekBar, 0);
 
             switch (rotationAngle) {
                 case VerticalSeekBar.ROTATION_ANGLE_CW_90:
                     ViewCompat.setRotation(seekBar, 90);
-                    ViewCompat.setTranslationY(seekBar, 0);
-                    ViewCompat.setTranslationX(seekBar, (w + seekBarMeasuredHeight) / 2);
+                    if (isLTR) {
+                        ViewCompat.setTranslationX(seekBar, seekBarMeasuredHeight + hOffset);
+                        ViewCompat.setTranslationY(seekBar, 0);
+                    } else {
+                        ViewCompat.setTranslationX(seekBar, -hOffset);
+                        ViewCompat.setTranslationY(seekBar, seekBarMeasuredWidth);
+                    }
                     break;
                 case VerticalSeekBar.ROTATION_ANGLE_CW_270:
                     ViewCompat.setRotation(seekBar, 270);
-                    ViewCompat.setTranslationY(seekBar, seekBarMeasuredWidth);
-                    ViewCompat.setTranslationX(seekBar, (w - seekBarMeasuredHeight) / 2);
+                    if (isLTR) {
+                        ViewCompat.setTranslationX(seekBar, hOffset);
+                        ViewCompat.setTranslationY(seekBar, seekBarMeasuredWidth);
+                    } else {
+                        ViewCompat.setTranslationX(seekBar, -(seekBarMeasuredHeight + hOffset));
+                        ViewCompat.setTranslationY(seekBar, 0);
+                    }
                     break;
             }
         }

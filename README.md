@@ -28,7 +28,7 @@ Target platforms
 Latest version
 ---
 
-- Version 0.7.1  (February 25, 2017)
+- Version 0.7.2  (March 12, 2017)
 
 
 
@@ -39,7 +39,7 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```groovy
 dependencies {
-    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.1'
+    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.2'
 }
 ```
 
@@ -62,7 +62,7 @@ Usage
 </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 ```
 
-**NOTE: `android:splitTrack="false"` is required for Android N.**
+**NOTE: `android:splitTrack="false"` is required for Android N+.**
 
 ### Java code
 
