@@ -39,6 +39,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        demo {
+        }
+        development {
+        }
+    }
 }
 
 // load signing config from external properties file

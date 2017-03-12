@@ -15,61 +15,65 @@
        limitations under the License.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              tools:context=".MainActivity">
 
     <!-- VerticalSeekBar in non-ScrollView -->
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Small"
-        android:text="@string/text_in_non_scroll_view" />
+        android:text="@string/text_in_non_scroll_view"
+        android:textAppearance="@android:style/TextAppearance.Small"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="#cccccc"
+        android:paddingBottom="10dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="10dp">
 
         <!-- Clock wise - 90 -->
         <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
             android:id="@+id/seekBarContainer1"
             android:layout_width="wrap_content"
             android:layout_height="150dp">
+
             <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
                 android:id="@+id/seekBar1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:splitTrack="false"
-                app:seekBarRotation="CW90" />
+                app:seekBarRotation="CW90"/>
         </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
         <!-- Clock wise - 270 -->
         <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
             android:id="@+id/seekBarContainer2"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@+id/seekBarContainer1"
             android:layout_height="150dp"
-            android:layout_marginLeft="50dp">
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@+id/seekBarContainer1"
+            android:layout_toRightOf="@+id/seekBarContainer1"
+            android:minWidth="10dp">
 
             <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
                 android:id="@+id/seekBar2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:splitTrack="false"
-                app:seekBarRotation="CW270" />
+                app:seekBarRotation="CW270"/>
         </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
     </RelativeLayout>
@@ -79,21 +83,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Small"
-        android:text="@string/text_in_scroll_view" />
+        android:text="@string/text_in_scroll_view"
+        android:textAppearance="@android:style/TextAppearance.Small"/>
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         android:background="#cccccc">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
-            android:paddingTop="100dp"
-            android:paddingBottom="100dp">
+            android:paddingTop="100dp">
 
             <!-- Clock wise - 90 -->
             <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
@@ -106,23 +111,25 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:splitTrack="false"
-                    app:seekBarRotation="CW90" />
+                    app:seekBarRotation="CW90"/>
             </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
             <!-- Clock wise - 270 -->
             <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
                 android:id="@+id/seekBarContainer4"
                 android:layout_width="wrap_content"
-                android:layout_toRightOf="@+id/seekBarContainer3"
                 android:layout_height="150dp"
-                android:layout_marginLeft="50dp">
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_toEndOf="@+id/seekBarContainer3"
+                android:layout_toRightOf="@+id/seekBarContainer3">
 
                 <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
                     android:id="@+id/seekBar4"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:splitTrack="false"
-                    app:seekBarRotation="CW270" />
+                    app:seekBarRotation="CW270"/>
             </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
         </RelativeLayout>
