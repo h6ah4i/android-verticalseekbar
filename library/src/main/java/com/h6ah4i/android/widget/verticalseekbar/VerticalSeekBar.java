@@ -383,9 +383,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
     }
 
     /*package*/ boolean useViewRotation() {
-        final boolean isSupportedApiLevel = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
-        final boolean inEditMode = isInEditMode();
-        return isSupportedApiLevel && !inEditMode;
+        return !isInEditMode();
     }
 
     private VerticalSeekBarWrapper getWrapper() {

@@ -17,12 +17,13 @@
 package com.h6ah4i.android.widget.verticalseekbar;
 
 import android.content.Context;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import androidx.core.view.ViewCompat;
 
 public class VerticalSeekBarWrapper extends FrameLayout {
     public VerticalSeekBarWrapper(Context context) {
@@ -114,8 +115,8 @@ public class VerticalSeekBarWrapper extends FrameLayout {
                 seekBarHeight = seekBar.getMeasuredHeight();
             }
 
-            final int measuredWidth = ViewCompat.resolveSizeAndState(seekBarWidth + hPadding, widthMeasureSpec, 0);
-            final int measuredHeight = ViewCompat.resolveSizeAndState(seekBarHeight + vPadding, heightMeasureSpec, 0);
+            final int measuredWidth = resolveSizeAndState(seekBarWidth + hPadding, widthMeasureSpec, 0);
+            final int measuredHeight = resolveSizeAndState(seekBarHeight + vPadding, heightMeasureSpec, 0);
 
             setMeasuredDimension(measuredWidth, measuredHeight);
         } else {
@@ -145,28 +146,28 @@ public class VerticalSeekBarWrapper extends FrameLayout {
 
             seekBar.setLayoutParams(lp);
 
-            ViewCompat.setPivotX(seekBar, (isLTR) ? 0 : Math.max(0, h - vPadding));
-            ViewCompat.setPivotY(seekBar, 0);
+            seekBar.setPivotX((isLTR) ? 0 : Math.max(0, h - vPadding));
+            seekBar.setPivotY(0);
 
             switch (rotationAngle) {
                 case VerticalSeekBar.ROTATION_ANGLE_CW_90:
-                    ViewCompat.setRotation(seekBar, 90);
+                    seekBar.setRotation(90);
                     if (isLTR) {
-                        ViewCompat.setTranslationX(seekBar, seekBarMeasuredHeight + hOffset);
-                        ViewCompat.setTranslationY(seekBar, 0);
+                        seekBar.setTranslationX(seekBarMeasuredHeight + hOffset);
+                        seekBar.setTranslationY(0);
                     } else {
-                        ViewCompat.setTranslationX(seekBar, -hOffset);
-                        ViewCompat.setTranslationY(seekBar, seekBarMeasuredWidth);
+                        seekBar.setTranslationX(-hOffset);
+                        seekBar.setTranslationY(seekBarMeasuredWidth);
                     }
                     break;
                 case VerticalSeekBar.ROTATION_ANGLE_CW_270:
-                    ViewCompat.setRotation(seekBar, 270);
+                    seekBar.setRotation( 270);
                     if (isLTR) {
-                        ViewCompat.setTranslationX(seekBar, hOffset);
-                        ViewCompat.setTranslationY(seekBar, seekBarMeasuredWidth);
+                        seekBar.setTranslationX(hOffset);
+                        seekBar.setTranslationY(seekBarMeasuredWidth);
                     } else {
-                        ViewCompat.setTranslationX(seekBar, -(seekBarMeasuredHeight + hOffset));
-                        ViewCompat.setTranslationY(seekBar, 0);
+                        seekBar.setTranslationX(-(seekBarMeasuredHeight + hOffset));
+                        seekBar.setTranslationY(0);
                     }
                     break;
             }
