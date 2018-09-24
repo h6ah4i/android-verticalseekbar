@@ -15,12 +15,8 @@
  */
 
 android {
-    compileSdkVersion 25
-    if (System.getenv("JITPACK") == "true") {
-        buildToolsVersion '25.0.2'
-    } else {
-        buildToolsVersion '25.0.2'
-    }
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
