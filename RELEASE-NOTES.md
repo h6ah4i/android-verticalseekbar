@@ -1,3 +1,7 @@
+## 1.0.0
+- Migrated to AndroidX
+- Changed minimum API level to v14
+
 ## 0.7.2
 - Fix layout issue when in RTL mode (#6)
 - Better padding handling for VerticalSeekBarWrapper

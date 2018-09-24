@@ -40,8 +40,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.AppCompatSeekBar;
+import androidx.core.view.ViewCompat;
+import androidx.appcompat.widget.AppCompatSeekBar;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -383,9 +383,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
     }
 
     /*package*/ boolean useViewRotation() {
-        final boolean isSupportedApiLevel = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
-        final boolean inEditMode = isInEditMode();
-        return isSupportedApiLevel && !inEditMode;
+        return !isInEditMode();
     }
 
     private VerticalSeekBarWrapper getWrapper() {

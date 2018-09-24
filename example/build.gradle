@@ -23,10 +23,10 @@ apply from: '../common/android-signing-utils.gradle'
 android {
     defaultConfig {
         applicationId "com.h6ah4i.android.example.verticalseekbar"
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 7
-        versionName "0.7.2"
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 8
+        versionName "1.0.0"
     }
 
     signingConfigs {
@@ -39,13 +39,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    productFlavors {
-        demo {
-        }
-        development {
-        }
-    }
 }
 
 // load signing config from external properties file
@@ -55,8 +48,6 @@ if (loadSigningConfigFromPropertiesFile(
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(":library")
-
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    implementation project(":library")
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 }
