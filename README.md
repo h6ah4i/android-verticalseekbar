@@ -1,7 +1,7 @@
 VerticalSeekBar
 ===============
 
-Vertical SeekBar class which supports Android 2.3 - 7.x.
+Vertical SeekBar class which supports Android 4.x - 9.x.
 
 [ ![Download](https://api.bintray.com/packages/h6ah4i/maven/android-verticalseekbar/images/download.svg) ](https://bintray.com/h6ah4i/maven/android-verticalseekbar/_latestVersion)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VerticalSeekBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1436)
@@ -9,9 +9,9 @@ Vertical SeekBar class which supports Android 2.3 - 7.x.
 ---
 
 ### Screenshots
-| Gingerbread |    ICS    | Lollipop   | Marshmallow |
-|-------------|-----------|------------|-------------|
-| <img src="./pic/gb.png?raw=true" alt="Example on Android 2.3" width="150" /> | <img src="./pic/ics.png?raw=true" alt="Example on Android 4.0" width="150" /> | <img src="./pic/lollipop.png?raw=true" alt="Example on Android 5.0" width="150" /> | <img src="./pic/marshmallow.png?raw=true" alt="Example on Android 5.0" width="150" /> |
+|    ICS    | Lollipop   | Marshmallow |
+|-----------|------------|-------------|
+| <img src="./pic/ics.png?raw=true" alt="Example on Android 4.0" width="150" /> | <img src="./pic/lollipop.png?raw=true" alt="Example on Android 5.0" width="150" /> | <img src="./pic/marshmallow.png?raw=true" alt="Example on Android 5.0" width="150" /> |
 
 ### Download the demo app on Google Play
 <a href="https://play.google.com/store/apps/details?id=com.h6ah4i.android.example.verticalseekbar&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height="48" /></a>
@@ -21,14 +21,14 @@ Vertical SeekBar class which supports Android 2.3 - 7.x.
 Target platforms
 ---
 
-- from Android 2.3.x  (Gingerbread)
-- to Android 7.x (Nougat)
+- from Android 4.0.x  (IceCreamSandwich)
+- to Android 9.x (Pie)
 
 
 Latest version
 ---
 
-- Version 0.7.2  (March 12, 2017)
+- Version 1.0.0  (September 25, 2018)
 
 
 
@@ -39,7 +39,7 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```groovy
 dependencies {
-    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.2'
+    compile 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:1.0.0'
 }
 ```
 
