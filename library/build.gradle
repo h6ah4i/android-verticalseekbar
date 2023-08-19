@@ -21,7 +21,6 @@ ext {
     // required for 'android-maven-publish.gradle'
     mavenPublishDestDir = new File(rootDir, "repository").absolutePath
     mavenPublishDataFile = file('./library-data.properties').absolutePath
-    mavenPublishSigningSetting = file('../signing/library-maven-publish-signing.properties').absolutePath
 }
 
 // Common configurations
@@ -56,7 +55,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    api 'androidx.appcompat:appcompat:1.0.0'
 }
 
 // NOTE: this line should be place at end of the file
