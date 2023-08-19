@@ -35,7 +35,7 @@ Latest version
 Getting started
 ---
 
-This library is published on Maven Centeral. Just add these lines to `build.gradle`.
+This library is published on Maven Central. Just add these lines to `build.gradle`.
 
 ```diff
 repositories {
