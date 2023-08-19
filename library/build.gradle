@@ -28,9 +28,9 @@ apply from: '../common/android-set-common-properties.gradle'
 
 android {
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 28
-
+        minSdk 14
+        compileSdk 33
+        targetSdk 33
 
         def dataProps = new Properties()
         dataProps.load(project.file(project.mavenPublishDataFile).newDataInputStream())

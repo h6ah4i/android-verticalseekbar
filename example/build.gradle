@@ -23,8 +23,9 @@ apply from: '../common/android-signing-utils.gradle'
 android {
     defaultConfig {
         applicationId "com.h6ah4i.android.example.verticalseekbar"
-        minSdkVersion 14
-        targetSdkVersion 28
+        minSdk 14
+        compileSdk 33
+        targetSdk 33
         versionCode 8
         versionName "1.0.0"
     }
