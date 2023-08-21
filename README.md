@@ -78,7 +78,7 @@ SeekBar seekBar = (SeekBar) findViewById(R.id.mySeekBar);
 License
 ---
 
-This library is licensed under the [Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0), and contains some source code files delivered from product of Android Open Source Project (AOSP).
+This library is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0), and contains some source code files delivered from product of Android Open Source Project (AOSP).
 
 See [`LICENSE`](LICENSE) for full of the license text.
 
